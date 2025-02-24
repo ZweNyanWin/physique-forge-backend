@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/admin-users")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class AdminUserController {
 
     private final AdminUserService adminUserService;

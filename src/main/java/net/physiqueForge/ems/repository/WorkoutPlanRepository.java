@@ -23,9 +23,10 @@ public interface WorkoutPlanRepository extends JpaRepository<WorkoutPlan, Long> 
     @Transactional
     @Query(value = """
         INSERT INTO workout_plans 
-        (plan_name, duration_minutes, workout_status, exercises, assigned_client_id, created_by_id, updated_by_id, created_at, updated_at) 
-        VALUES (:planName, :durationMinutes, :workoutStatus, :exercises, :assignedClientId, :createdById, :updatedById, :createdAt, :updatedAt)
-        RETURNING id
+        (plan_name, duration_minutes, workout_status, exercises, assigned_client_id, 
+         created_by_id, updated_by_id, created_at, updated_at) 
+        VALUES (:planName, :durationMinutes, :workoutStatus, :exercises, :assignedClientId,
+                        :createdById, :updatedById, :createdAt, :updatedAt)RETURNING id
         """, nativeQuery = true)
     Integer insertWorkoutPlan(
             @Param("planName") String planName,

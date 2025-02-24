@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,13 +24,14 @@ public interface TrainerRepository extends JpaRepository<Trainer, Long> {
 
     @Transactional
     @Query(value = """
-        INSERT INTO trainers (name, email, specialization, experience, approved_by_id, created_at, updated_at, created_by_id, updated_by_id) 
-        VALUES (:name, :email, :specialization, :experience, :approvedBy, :createdAt, :updatedAt, :createdBy, :updatedBy)
-        RETURNING id
-        """, nativeQuery = true)
+        INSERT INTO trainers (name, email, date_of_birth, specialization, experience, approved_by_id,
+                              created_at, updated_at, created_by_id, updated_by_id) 
+        VALUES (:name, :email, :dateOfBirth, :specialization, :experience, :approvedBy, :createdAt,
+                        :updatedAt, :createdBy, :updatedBy) RETURNING id""", nativeQuery = true)
     Integer insertTrainer(
             @Param("name") String name,
             @Param("email") String email,
+            @Param("dateOfBirth") LocalDate dateOfBirth,
             @Param("specialization") String specialization,
             @Param("experience") long experience,
             @Param("approvedBy") Long approvedBy,
@@ -43,7 +45,7 @@ public interface TrainerRepository extends JpaRepository<Trainer, Long> {
     @Modifying
     @Query(value = """
         UPDATE trainers SET 
-        name = :name, email = :email, specialization = :specialization, 
+        name = :name, email = :email, date_of_birth = :dateOfBirth, specialization = :specialization, 
         experience = :experience, approved_by_id = :approvedBy, updated_at = :updatedAt 
         WHERE id = :id
         """, nativeQuery = true)
@@ -51,6 +53,7 @@ public interface TrainerRepository extends JpaRepository<Trainer, Long> {
             @Param("id") Long id,
             @Param("name") String name,
             @Param("email") String email,
+            @Param("dateOfBirth") LocalDate dateOfBirth,
             @Param("specialization") String specialization,
             @Param("experience") long experience,
             @Param("approvedBy") Long approvedBy,

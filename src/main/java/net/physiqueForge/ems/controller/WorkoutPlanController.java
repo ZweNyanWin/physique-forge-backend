@@ -12,36 +12,37 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/workout-plans")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class WorkoutPlanController {
 
     private final WorkoutPlanService workoutPlanService;
 
-    // ✅ CREATE Workout Plan
+    // CREATE Workout Plan
     @PostMapping
     public ResponseEntity<WorkoutPlanResponseDTO> createPlan(@RequestBody WorkoutPlanRequestDTO request) {
         return ResponseEntity.ok(workoutPlanService.createPlan(request));
     }
 
-    // ✅ GET ALL Workout Plans
+    //  GET ALL Workout Plans
     @GetMapping
     public ResponseEntity<List<WorkoutPlanResponseDTO>> getAllPlans() {
         return ResponseEntity.ok(workoutPlanService.getAllPlans());
     }
 
-    // ✅ GET Workout Plan by ID
+    // GET Workout Plan by ID
     @GetMapping("/{id}")
     public ResponseEntity<WorkoutPlanResponseDTO> getPlanById(@PathVariable Long id) {
         return ResponseEntity.ok(workoutPlanService.getPlanById(id));
     }
 
-    // ✅ UPDATE Workout Plan by ID
+    //  UPDATE Workout Plan by ID
     @PutMapping("/{id}")
     public ResponseEntity<WorkoutPlanResponseDTO> updatePlan(@PathVariable Long id,
                                                              @RequestBody WorkoutPlanRequestDTO request) {
         return ResponseEntity.ok(workoutPlanService.updatePlan(id, request));
     }
 
-    // ✅ DELETE Workout Plan by ID
+    //  DELETE Workout Plan by ID
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletePlan(@PathVariable Long id) {
         workoutPlanService.deletePlan(id);

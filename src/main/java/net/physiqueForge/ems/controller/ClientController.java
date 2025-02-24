@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/clients")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class ClientController {
 
     private final ClientService clientService;
@@ -42,3 +43,4 @@ public class ClientController {
         return ResponseEntity.ok("Client deleted successfully.");
     }
 }
+

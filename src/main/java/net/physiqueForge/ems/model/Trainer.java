@@ -19,6 +19,9 @@ public class Trainer extends MasterData {
     private String email;
 
     @Column(nullable = false)
+    private String DateOfBirth;
+
+    @Column(nullable = false)
     private String specialization;
 
     @Column(nullable = false)
@@ -27,4 +30,5 @@ public class Trainer extends MasterData {
     @ManyToOne
     @JoinColumn(name = "approved_by_id", foreignKey = @ForeignKey(name = "fk_trainer_admin"))
     private AdminUser approvedBy;
+
 }

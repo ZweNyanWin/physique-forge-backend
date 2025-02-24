@@ -55,3 +55,4 @@ public interface ClientNoteRepository extends JpaRepository<ClientNote, Long> {
     @Query(value = "DELETE FROM client_notes WHERE id = :noteId", nativeQuery = true)
     int deleteClientNoteById(@Param("noteId") Long noteId);
 }
+

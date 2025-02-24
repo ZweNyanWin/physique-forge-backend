@@ -16,11 +16,6 @@ public class TrainerController {
 
     private final TrainerService trainerService;
 
-    @PostMapping
-    public ResponseEntity<TrainerResponseDTO> createTrainer(@RequestBody TrainerRequestDTO request) {
-        return ResponseEntity.ok(trainerService.createTrainer(request));
-    }
-
     @GetMapping
     public ResponseEntity<List<TrainerResponseDTO>> getAllTrainers() {
         return ResponseEntity.ok(trainerService.getAllTrainers());
@@ -31,14 +26,19 @@ public class TrainerController {
         return ResponseEntity.ok(trainerService.getTrainerById(id));
     }
 
+    @PostMapping
+    public ResponseEntity<TrainerResponseDTO> createTrainer(@RequestBody TrainerRequestDTO trainerDTO) {
+        return ResponseEntity.ok(trainerService.createTrainer(trainerDTO));
+    }
+
     @PutMapping("/{id}")
-    public ResponseEntity<TrainerResponseDTO> updateTrainer(@PathVariable Long id, @RequestBody TrainerRequestDTO request) {
-        return ResponseEntity.ok(trainerService.updateTrainer(id, request));
+    public ResponseEntity<TrainerResponseDTO> updateTrainer(@PathVariable Long id, @RequestBody TrainerRequestDTO trainerDTO) {
+        return ResponseEntity.ok(trainerService.updateTrainer(id, trainerDTO));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteTrainer(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTrainer(@PathVariable Long id) {
         trainerService.deleteTrainer(id);
-        return ResponseEntity.ok("Trainer deleted successfully.");
+        return ResponseEntity.noContent().build();
     }
 }

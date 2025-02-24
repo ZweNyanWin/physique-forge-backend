@@ -55,3 +55,4 @@ public interface AdminUserRepository extends CrudRepository<AdminUser, Long> {
     @Query(value = "DELETE FROM admin_users WHERE id = :id", nativeQuery = true)
     int deleteAdminUserById(Long id);
 }
+

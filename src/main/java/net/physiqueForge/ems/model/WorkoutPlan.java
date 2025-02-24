@@ -45,7 +45,7 @@ public class WorkoutPlan {
     private String exercises;
 
     @Column(nullable = false)
-    private Long assignedClientId;  // ✅ Foreign key reference to Client
+    private Long assignedClientId;  // Foreign key reference to Client
 
     @PrePersist
     protected void onCreate() {

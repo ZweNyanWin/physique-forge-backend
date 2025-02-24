@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/ratings")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class RatingController {
 
     private final RatingService ratingService;

@@ -7,7 +7,7 @@ import java.util.List;
 public interface TrainerService {
     List<TrainerResponseDTO> getAllTrainers();
     TrainerResponseDTO getTrainerById(Long id);
-    TrainerResponseDTO createTrainer(TrainerRequestDTO trainerRequestDTO);
-    TrainerResponseDTO updateTrainer(Long id, TrainerRequestDTO trainerRequestDTO);
+    TrainerResponseDTO createTrainer(TrainerRequestDTO trainerDTO);
+    TrainerResponseDTO updateTrainer(Long id, TrainerRequestDTO trainerDTO);
     void deleteTrainer(Long id);
 }

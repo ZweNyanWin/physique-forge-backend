@@ -24,8 +24,11 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     Client getClientById(Long id);
 
     @Transactional
-    @Query(value = "INSERT INTO clients (name, email, phone_number, encrypted_password, dob, height, weight, client_status, goal, created_at, updated_at, created_by_id, updated_by_id) " +
-            "VALUES (:name, :email, :phone, :password, :dob, :height, :weight, :status, :goal, :createdAt, :updatedAt, :createdBy, :updatedBy) RETURNING id", nativeQuery = true)
+    @Query(value = "INSERT INTO clients (name, email, phone_number, encrypted_password, dob," +
+                  " height, weight, client_status, goal, " +
+                  "created_at, updated_at, created_by_id, updated_by_id) " + "VALUES (:name, " +
+                  ":email, :phone, :password, :dob, :height, :weight," + " :status, :goal, " +
+                  ":createdAt, :updatedAt, :createdBy, :updatedBy) RETURNING id", nativeQuery = true)
     void insertClient(@Param("name") String name, @Param("email") String email,
                       @Param("phone") String phone, @Param("password") String password,
                       @Param("dob") LocalDate dob, @Param("height") Double height,

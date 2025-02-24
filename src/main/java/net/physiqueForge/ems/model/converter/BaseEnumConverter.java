@@ -13,7 +13,7 @@ public abstract class BaseEnumConverter<E extends Enum<E> & BaseEnum<V>, V> impl
 
     @Override
     public V convertToDatabaseColumn(E attribute) {
-        return (attribute != null) ? attribute.getValue() : null; // ✅ Store as Integer
+        return (attribute != null) ? attribute.getValue() : null; //Store as Integer
     }
 
     @Override
